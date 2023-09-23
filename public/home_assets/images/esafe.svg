@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1370 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g id="Artboard1" transform="matrix(1.33789,0,0,0.292969,0,0)">
+        <rect x="0" y="0" width="1024" height="1024" style="fill:none;"/>
+        <g transform="matrix(1.29757,0,0,5.92559,-139.923,-524.075)">
+            <path d="M251.209,217.999C251.209,217.999 236.892,246.242 182.375,241.409" style="fill:none;stroke:rgb(86,90,102);stroke-width:6.91px;"/>
+        </g>
+        <g transform="matrix(-1.29757,0,0,5.92559,355.222,-520.639)">
+            <path d="M251.209,217.999C251.209,217.999 241.3,242.041 187.443,241.057" style="fill:none;stroke:rgb(112,119,137);stroke-width:6.91px;"/>
+        </g>
+        <g transform="matrix(1.29757,0,0,5.92559,-139.031,-506.765)">
+            <path d="M123.828,199.018L123.828,170.503C123.828,170.503 127.936,122.898 170.225,112.99C170.225,112.99 170.789,101.068 191.08,100.375L191.365,199.383L123.828,199.018Z" style="fill:rgb(254,219,65);"/>
+        </g>
+        <g transform="matrix(-1.29757,0,0,5.92559,357.284,-500.053)">
+            <path d="M123.828,197.472L123.828,170.503C123.828,170.503 127.936,122.898 170.225,112.99C170.225,112.99 171.053,100.065 191.344,99.372L191.08,198.275L123.828,197.472Z" style="fill:rgb(252,191,41);"/>
+        </g>
+        <g transform="matrix(1.18123,-2.45243,0.537027,5.39428,-302.108,572.506)">
+            <text x="274.486px" y="142.518px" style="font-family:'AdobeNaskh-Medium', 'Adobe Naskh';font-weight:500;font-size:100px;">e</text>
+        </g>
+        <g transform="matrix(1.29757,0,0,5.92559,-139.631,-498.945)">
+            <path d="M212.628,112.693L204.17,161.99C204.17,161.99 218.969,169.131 225.774,150.572L234.666,123.303C234.666,123.303 224.971,115.779 212.628,112.693Z" style="fill:rgb(255,135,59);"/>
+        </g>
+        <g transform="matrix(-1.29757,0,0,5.92559,356.697,-504.823)">
+            <path d="M212.628,112.693L204.17,161.99C204.17,161.99 218.969,169.131 225.774,150.572L234.573,123.888C234.573,123.888 224.755,115.876 212.628,112.693Z" style="fill:rgb(253,170,50);"/>
+        </g>
+        <g transform="matrix(1.29757,0,0,5.92559,-139.031,-511.061)">
+            <path d="M191.773,199.922L123.204,199.318C123.204,199.318 113.791,201.743 114.372,208.044C114.613,210.661 115.565,215.94 123.204,216.681L191.385,216.681L191.773,199.922Z" style="fill:rgb(254,168,49);"/>
+        </g>
+        <g transform="matrix(-1.29757,0,0,5.92559,357.923,-511.13)">
+            <path d="M191.773,199.922L123.204,199.318C123.204,199.318 113.791,201.743 114.372,208.044C114.613,210.661 115.565,215.94 123.204,216.681L191.576,216.681L191.773,199.922Z" style="fill:rgb(255,135,59);"/>
+        </g>
+        <g transform="matrix(0.72649,-0.802572,0.175746,3.31764,-123.559,873.194)">
+            <text x="441.221px" y="127.297px" style="font-family:'LucidaHandwriting-Italic', 'Lucida Handwriting', cursive;font-style:italic;font-size:300px;fill:rgb(43,55,67);">e</text>
+        </g>
+        <g transform="matrix(0.747445,0,0,3.41333,-99.8719,262.029)">
+            <text x="606.478px" y="166.69px" style="font-family:'DDTW00-ExtendedBold', sans-serif;font-weight:700;font-stretch:expanded;font-size:210px;fill:rgb(3,132,251);">SAFE</text>
+        </g>
+    </g>
+</svg>
