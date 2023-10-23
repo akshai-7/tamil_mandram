@@ -104,8 +104,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #fff;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link ">
-        <img src="{{ asset('/public/image/logo.png') }}" height="50" width="100" style="margin-left: 30px; zoom: 1.5;"
-            alt="Image" />
+        <img src="{{ asset('/public/image/logo.png') }}" height="50" width="100"
+            style="margin-left: 30px; zoom: 1.5;" alt="Image" />
 
     </a>
 
@@ -219,6 +219,13 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href="{{ route('news.index') }}" class="nav-link  ">
+                            <i class="fa fa-newspaper nav-icon"></i>
+                            <p class="sub-menu"><b>News </b></p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="{{ route('executive-committee.index') }}" class="nav-link  ">
                             <i class="fa fa-user nav-icon"></i>
                             <p class="sub-menu"><b>Executive Committee </b></p>
@@ -321,8 +328,6 @@
                             </p>
                         </a>
                     </li>
-
-
                 @endif
             </ul>
         </nav>

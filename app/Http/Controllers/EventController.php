@@ -44,7 +44,7 @@ class EventController extends Controller
                 $event = $event->whereDate("event_date", "<=", $to_date);
             }
 
-            $data = $event->where("org_id", Auth::user()->id)->orderBy("created_at", "desc")->get();
+            $data = $event->where("org_id", Auth::user()->id)->orderBy("created_at", "asc")->get();
 
             return DataTables::of($data)
                 ->addIndexColumn()

@@ -47,15 +47,15 @@ class DashboardController extends BaseController
             $org_details['org_body_color']   = @$organization->body_color ? "#" . $organization->body_color :  "#F9F9F9";
             $org_details['org_footer_color'] = @$organization->footer_color ? "#" . $organization->footer_color :  "#5C64F7";
 
-            $org_details['about_us'] = @$organization->about_us!=""  ?  $organization->about_us : "";
+            $org_details['about_us'] = @$organization->about_us != ""  ?  $organization->about_us : "";
 
             $org_details['notification_count'] = "2";
 
-            $event = Event::where("event_date", ">", date('Y-m-d'))->where("org_id", Auth::user()->id)->where("status","1")->orderBy("event_date", "asc")->first();
+            $event = Event::where("event_date", ">", date('Y-m-d'))->where("org_id", Auth::user()->id)->where("status", "1")->orderBy("event_date", "asc")->first();
 
             $members = ExecutiveCommittees::where("status", "1")->where("org_id", Auth::user()->id)->latest('created_at')->take(3)->get();
 
-            $membersDetails = $members->map(function ($value)  {
+            $membersDetails = $members->map(function ($value) {
                 $data["id"] = $value->id;
                 $data["member_name"] = $value->name;
                 $data["member_description"] = $value->description;
@@ -67,7 +67,7 @@ class DashboardController extends BaseController
                 return $data;
             });
 
-            $org_details['executive_committees_error_status'] = count($membersDetails) ? false :true;
+            $org_details['executive_committees_error_status'] = count($membersDetails) ? false : true;
             $org_details['executive_committees'] = $membersDetails;
 
             if ($event) {

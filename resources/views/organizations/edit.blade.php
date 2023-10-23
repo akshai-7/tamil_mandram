@@ -104,8 +104,8 @@
                                                 Details</a>
                                         </li>
                                         <!-- <li class="nav-item">
-                                                                                                    <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">2. Settings</a>
-                                                                                                </li> -->
+                                                                                                                                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">2. Settings</a>
+                                                                                                                            </li> -->
                                         <li class="nav-item">
                                             <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
                                                 href="#custom-tabs-password" role="tab"
@@ -222,9 +222,12 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-5">
                                                             <div class="form-group">
-                                                                <label for="exampleInputFile">Logo upload</label>
+                                                                <label for="exampleInputFile">Logo upload <span
+                                                                        style="color: grey">(Minimum image resolution 500 X
+                                                                        500
+                                                                        px)</span></label>
                                                                 <div class="input-group">
                                                                     <input name="image" id="file-input"
                                                                         accept="image/jpg,image/jpeg,image/png"
@@ -233,7 +236,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-1 mt-3 ml-4">
+                                                        <div class="col-md-1 mt-3">
                                                             <img class="cropped lg preview-img no-broder"
                                                                 data-toggle="modal" data-target="#getCroppedCanvasModal"
                                                                 src="data:image/png;base64,{!! $fileDecrypt !!}"

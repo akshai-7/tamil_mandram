@@ -7,11 +7,10 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ol class="breadcrumb float-sm-left">
-                            <li class="breadcrumb-item "> <a href="{{ route('youth-committee.index') }}" class="hover1">Youth
-                                    Committee</li>
-                            <li class="breadcrumb-item active"><a data-original-title="" title=""> / Edit</a></li>
+                            <li class="breadcrumb-item "> <a href="{{ route('news.index') }}" class="hover1">News</li>
+                            <li class="breadcrumb-item active "> &nbsp; / <a> Add News</a></li>
                         </ol>
-                        <a class="btn btn-primary  pull-right" href="{{ route('youth-committee.index') }}">Back</a>
+                        <a class="btn btn-primary  pull-right" href="{{ url('news') }}">Back</a>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -26,32 +25,20 @@
                         <!-- jquery validation -->
                         <div class="card ">
                             <div class="card-header card-custom-header">
-                                <div class="card-title"> Edit Youth Committee</div>
+                                <div class="card-title"> Add News</div>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form id="add_e_event" method="POST"
-                                action="{{ route('youth-committee.update', encrypt($data->id)) }}" class="tabcontent"
-                                enctype="multipart/form-data">
+                            <form id="add_news" action="{{ route('news.store') }}" method="post">
                                 @csrf
-                                @method('PUT')
 
                                 <div class="card-body">
                                     <div class="row">
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-5">
                                             <div class="form-group">
-                                                <label> Name</label>
-                                                <input type="text" name="name" id="name" class="form-control"
-                                                    value="{{ @$data->name }}">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label> Designation</label>
-                                                <input type="text" name="designation" id="designation"
-                                                    class="form-control" value="{{ @$data->designation }}">
+                                                <label> Title</label>
+                                                <input type="text" name="name" id="name" class="form-control">
                                             </div>
                                         </div>
 
@@ -61,25 +48,27 @@
                                                         style="color: grey">(Minimum image resolution 500 X 500
                                                         px)</span></label>
                                                 <div class="input-group">
-                                                    <input class="form-control" name="image" id="file-input"
-                                                        accept="image/*" class="" type="file" data-error="#errNm1">
+                                                    <input name="image" id="file-input" accept="image/*"
+                                                        class="form-control" type="file" data-error="#errNm1">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-1 mt-2">
-                                            <img class="cropped lg preview-img no-broder" data-toggle="modal"
+                                        <div class="col-md-2">
+                                            <img class="cropped  preview-img  no-broder" data-toggle="modal"
                                                 data-target="#getCroppedCanvasModal"
-                                                src="data:image/png;base64,{!! $fileDecrypt !!}" alt="" />
+                                                src="{{ asset('/public/assets/dist/img/photo.png') }}" alt="">
                                             <input type="hidden" name="image_src" value=""
                                                 class="hidden-preview-img">
                                         </div>
 
-
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <textarea name="description" class="form-control summernote" id="description">{{ @$data->description }} </textarea>
+                                                <textarea name="description" class="form-control summernote" id="description"></textarea>
                                             </div>
+                                            {{-- <span id="error_description" class="error invalid-feedback">Please enter a
+                                                description.
+                                            </span> --}}
                                         </div>
 
                                         <div class="col-md-6">
@@ -87,8 +76,7 @@
                                                 <label class="label">Current Status</label>
                                                 <div
                                                     class="custom-control lg-btn  custom-switch custom-switch-off-danger custom-switch-on-success">
-                                                    <input type="checkbox" name="status"
-                                                        @if ($data->status) checked @endif
+                                                    <input type="checkbox" name="status" checked
                                                         class="custom-control-input" id="customSwitch3" value="1">
                                                     <label class="custom-control-label" for="customSwitch3"></label>
                                                 </div>
@@ -102,6 +90,7 @@
                                 </div>
                             </form>
                         </div>
+                        <!-- /.card -->
                     </div>
                 </div>
             </div>
@@ -110,53 +99,52 @@
     </div>
 @endsection
 @php
-    $img = 'data:image/png;base64,' . $fileDecrypt;
+    $img = '';
 @endphp
 @include('common.file-upload', compact('img'))
 
 
 @push('child-scripts')
     <script>
-        $('#add_e_event').validate({
+        $('#datepicker').datepicker({
+            format: 'mm-dd-YYYY',
+            starDate: "+0d"
+        });
+
+        $('#add_news').validate({
             rules: {
                 name: {
                     maxlength: 50,
                     required: true
                 },
-                designation: {
-                    maxlength: 50,
-                    required: true
-                },
+
                 description: {
                     required: true
                 },
                 image: {
-                    required: false,
+                    required: true,
                     accept: "image/jpg,image/jpeg,image/png",
                 },
+
+
             },
             messages: {
 
-                event_title: {
-                    required: "Please enter a name."
+
+                name: {
+                    required: "Please enter a title."
                 },
 
-                designation: {
-                    required: "Please enter a designation."
-                },
+
                 description: {
                     required: "Please enter a description."
                 },
-
                 image: {
                     required: "Please select image",
                     accept: "jpg ,jpeg ,png formate only allowed",
                     // filesize: "Must be file size 1mb  only allowed!"
                 },
 
-                description: {
-                    required: "Please enter a description."
-                },
 
                 errorElement: 'span',
                 errorPlacement: function(error, element) {
@@ -183,16 +171,6 @@
                 $(element).removeClass('is-invalid');
             },
             ignore: ":hidden:not(.summernote),.note-editable.panel-body",
-            // submitHandler: function(form) {
-
-            //     console.log("sdf");
-            //     if ($('#history_description').summernote('isEmpty')) { //using id
-            //         console.log("sdf");
-            //         alert('Description is empty');
-            //     } else {
-            //         form.submit();
-            //     }
-            // }
         });
     </script>
 @endpush

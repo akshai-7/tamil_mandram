@@ -40,9 +40,9 @@ class ExecutiveCommitteeController extends BaseController
             $type = $request->member_type;
 
 
-            $members = ExecutiveCommittees::where("status", "1")->where("org_id", Auth::user()->id)->get();
+            $members = ExecutiveCommittees::where("status", "1")->where("org_id", Auth::user()->id)->orderBy("id", "asc")->get();
 
-        //    ;
+            //    ;
 
             $result = $members->map(function ($value)  use ($type) {
                 $data["id"] = $value->id;

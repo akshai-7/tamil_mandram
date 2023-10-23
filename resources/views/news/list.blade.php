@@ -10,8 +10,7 @@
                     </div>
                     <div class="col-sm-12">
                         <ol class="breadcrumb float-sm-left">
-                            <li class="breadcrumb-item"><a href="{{ route('executive-committee.index') }}">Executive
-                                    Committee</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('news.index') }}">News</a></li>
                             <li class="breadcrumb-item active"><a> List</a></li>
                         </ol>
                     </div>
@@ -24,28 +23,19 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <!-- /.card -->
                         <div class="card">
                             <div class="card-header " style="padding: 0;background-color: #fff;">
-                                <div class="card-title">
-                                </div>
-                                <p class="btn pull-left mt-3" style="color: gray;font-size:18px;">Note: First three data
-                                    will be displayed
-                                    in the
-                                    mobile app
-                                    dashboard
-                                </p>
-                                <a href="{{ route('executive-committee.create') }}" class="btn btn-primary pull-right "> +
-                                    Add <a>
+                                <div class="card-title "></div>
+                                <a href="{{ route('news.create') }}" class="btn btn-primary pull-right "> + Add News<a>
+
                             </div>
-                            <!-- /.card-header -->
+
                             <div class="card-body">
-                                <table id="executive-committee" class="table table-bordered table-striped ">
+                                <table id="news" class="table table-bordered table-striped ">
                                     <thead>
                                         <tr>
                                             <th style="width: 42.934px;">Sl.No</th>
-                                            <th>Name</th>
-                                            <th>Designation</th>
+                                            <th>Title</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -64,17 +54,19 @@
             </div>
             <!-- /.container-fluid -->
         </section>
+
     </div>
 @endsection
+
 @push('child-scripts')
     <script>
         $(function() {
 
-            var table = $('#executive-committee').DataTable({
+            var table = $('#news').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('executive-committee.index') }}",
+                    url: "{{ route('news.index') }}",
                     type: 'GET',
                 },
                 language: {
@@ -96,11 +88,6 @@
                         data: 'name',
                         name: 'name'
                     },
-                    {
-                        data: 'designation',
-                        name: 'designation'
-                    },
-
                     {
                         data: 'status',
                         name: 'status'

@@ -30,7 +30,7 @@
                             <div class="card-header " style="padding: 0;background-color: #fff;">
                                 <div class="card-title "></div>
                                 <button type="button" class="btn btn-primary pull-right " data-toggle="modal"
-                                    data-target="#modal-lg"> + Send Notfication</button>
+                                    data-target="#modal-lg"> + Send Notification</button>
                             </div>
 
                             <!-- /.card-header -->
@@ -79,7 +79,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label> Title</label>
+                                            <label> Title <span style="color: grey">(Maximum characters 30)</span></label>
                                             <input type="text" name="title" id="title" class="form-control"
                                                 value="">
                                         </div>
@@ -127,7 +127,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label> Title</label>
+                                            <label> Title <span style="color: grey">(Maximum characters 30)</span></label>
                                             <input type="hidden" name="id" id="edit_id" value="">
                                             <input type="text" name="title" id="edit_title" class="form-control"
                                                 value="">

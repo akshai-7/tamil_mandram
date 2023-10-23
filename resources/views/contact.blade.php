@@ -36,7 +36,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <textarea class="form-control summernote" name="contact_description" id="contact_description">{{ @$data->contact_description }}</textarea>
+                                                <textarea class="form-control summernote" name="contact_description" id="contact_description"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-7">

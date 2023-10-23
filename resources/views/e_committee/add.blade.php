@@ -35,14 +35,14 @@
                                 <div class="card-body">
                                     <div class="row">
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label> Name</label>
                                                 <input type="text" name="name" id="name" class="form-control">
                                             </div>
                                         </div>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label> Designation</label>
                                                 <input type="text" name="designation" id="designation"
@@ -50,9 +50,11 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-5">
                                             <div class="form-group">
-                                                <label for="exampleInputFile">Photo Upload</label>
+                                                <label for="exampleInputFile">Photo Upload <span
+                                                        style="color: grey">(Minimum image resolution 500 X 500
+                                                        px)</span></label>
                                                 <div class="input-group">
                                                     <input class="form-control" name="image" id="file-input"
                                                         accept="image/*" class="" type="file" data-error="#errNm1">

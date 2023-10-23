@@ -8,6 +8,7 @@ use App\Http\Controllers\API\LoginController;
 use App\Http\Controllers\API\EventController;
 use App\Http\Controllers\API\ExecutiveCommitteeController;
 use App\Http\Controllers\API\HistoryController;
+use App\Http\Controllers\API\NewsController;
 use App\Http\Controllers\API\NotificationController;
 use App\Http\Controllers\API\ProfileController;
 use App\Http\Controllers\API\SponsorController;
@@ -49,6 +50,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/by-law-list', [BylawController::class, 'index'])->name('by-law-list');
     Route::post('/by-law-view', [BylawController::class, 'view'])->name('by-law-view');
+
+    Route::get('/news-list', [NewsController::class, 'index'])->name('news-list');
+    Route::post('/news-view', [NewsController::class, 'view'])->name('news-view');
 
     Route::get('/history', [HistoryController::class, 'index'])->name('history');
 

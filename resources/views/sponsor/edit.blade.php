@@ -44,16 +44,18 @@
                                             ]) !!}
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-5">
                                         <div class="form-group">
-                                            <label for="exampleInputFile">Image Upload</label>
+                                            <label for="exampleInputFile">Image Upload <span style="color: grey">(Minimum
+                                                    image resolution 500 X 500
+                                                    px)</span></label>
                                             <div class="input-group">
                                                 <input name="image" id="file-input" class="form-control" accept="image/*"
                                                     class="" type="file" data-error="#errNm1">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 mt-3">
+                                    <div class="col-md-3 mt-3">
 
                                         <img class="cropped lg preview-img no-broder" data-toggle="modal"
                                             data-target="#getCroppedCanvasModal"

@@ -73,6 +73,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('executive-committee', 'ExecutiveCommitteeController');
     Route::resource('youth-committee', 'YouthCommitteeController');
     Route::resource('by-law', 'ByLawController');
+    Route::resource('news', 'NewsController');
     Route::resource('sponsor', 'SponsorController');
     Route::resource('native-language', 'NativeLanguageController');
     Route::resource('send-notification', 'SendNotificationController');
@@ -191,6 +192,10 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/by_law', [HomeController::class, 'by_law'])->name('by_law');
     Route::get('/by_law_add', [HomeController::class, 'by_law_add'])->name('by_law_add');
     Route::get('/by_law_edit', [HomeController::class, 'by_law_edit'])->name('by_law_edit');
+
+    // Route::get('/news', [HomeController::class, 'news'])->name('news');
+    // Route::get('/news_add', [HomeController::class, 'news_add'])->name('news_add');
+    // Route::get('/news_edit', [HomeController::class, 'news_edit'])->name('news_edit');
 
     // Route::get('/history', [HomeController::class, 'history'])->name('history');
     Route::get('/native_language', [HomeController::class, 'native_language'])->name('native_language');

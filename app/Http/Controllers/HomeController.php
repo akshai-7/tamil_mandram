@@ -16,12 +16,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        if(Auth::user()->user_role =="1") {
+        if (Auth::user()->user_role == "1") {
             return view('Dashbord');
-        } else{
+        } else {
             return view('user_dashboard');
         }
-
     }
     public function user()
     {
@@ -167,6 +166,22 @@ class HomeController extends Controller
     }
 
 
+    public function news()
+    {
+        return view('news.list');
+    }
+
+    public function news_add()
+    {
+        return view('news.add');
+    }
+
+    public function news_edit()
+    {
+        return view('news.edit');
+    }
+
+
     public function history()
     {
         return view('history');
@@ -178,34 +193,34 @@ class HomeController extends Controller
     }
 
 
-    public function banner() {
+    public function banner()
+    {
 
         return view('master_banner');
     }
 
-    public function whatapp() {
+    public function whatapp()
+    {
 
         return view('whatapp');
     }
 
 
-    public function commonFunction() {
+    public function commonFunction()
+    {
 
         // dd(encrypt("123456"));
 
 
-        $data = ['user_name' => "742250", "password" => "123654","org_code" => "ORG1234","org_name" => "ADC Org"];
 
-        // echo view('mail.web_login_details',$data);
+        // echo view('mail.web_login_details', $data);
         // exit;
+        $data = ['user_name' => "742250", "password" => "123654", "org_code" => "ORG1234", "org_name" => "ADC Org"];
 
-        $email ="psivamayas@gmail.com";
-        Mail::send('mail.web_login_details', $data, function ($message) use ($email) {
+        Mail::send('mail.web_login_details', $data, function ($message) {
             $message->subject('Welcome to iOrg - Your Digital Hub for Organizational Success!');
-            $message->to("psivamayas@gmail.com");
-            $message->from("mailsupport@iorgapp.com","iOrg");
+            $message->to("akshaikumar568@gmail.com");
+            $message->bcc('akshai2537@gmail.com');
         });
     }
-
 }
-

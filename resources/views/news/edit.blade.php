@@ -7,11 +7,10 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ol class="breadcrumb float-sm-left">
-                            <li class="breadcrumb-item "> <a href="{{ route('youth-committee.index') }}" class="hover1">Youth
-                                    Committee</li>
-                            <li class="breadcrumb-item active"><a data-original-title="" title=""> / Edit</a></li>
+                            <li class="breadcrumb-item "> <a href="{{ route('news.index') }}" class="hover1">News</li>
+                            <li class="breadcrumb-item active "> &nbsp; / <a> Edit News</a></li>
                         </ol>
-                        <a class="btn btn-primary  pull-right" href="{{ route('youth-committee.index') }}">Back</a>
+                        <a class="btn btn-primary  pull-right" href="{{ route('news.index') }}">Back</a>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -26,32 +25,22 @@
                         <!-- jquery validation -->
                         <div class="card ">
                             <div class="card-header card-custom-header">
-                                <div class="card-title"> Edit Youth Committee</div>
+                                <div class="card-title"> Edit News</div>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form id="add_e_event" method="POST"
-                                action="{{ route('youth-committee.update', encrypt($data->id)) }}" class="tabcontent"
-                                enctype="multipart/form-data">
+                            <form id="add_news" method="POST" action="{{ route('news.update', encrypt($data->id)) }}"
+                                class="tabcontent" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-
                                 <div class="card-body">
                                     <div class="row">
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-5">
                                             <div class="form-group">
-                                                <label> Name</label>
+                                                <label> Title</label>
                                                 <input type="text" name="name" id="name" class="form-control"
                                                     value="{{ @$data->name }}">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label> Designation</label>
-                                                <input type="text" name="designation" id="designation"
-                                                    class="form-control" value="{{ @$data->designation }}">
                                             </div>
                                         </div>
 
@@ -61,12 +50,12 @@
                                                         style="color: grey">(Minimum image resolution 500 X 500
                                                         px)</span></label>
                                                 <div class="input-group">
-                                                    <input class="form-control" name="image" id="file-input"
-                                                        accept="image/*" class="" type="file" data-error="#errNm1">
+                                                    <input name="image" id="file-input" accept="image/*"
+                                                        class="form-control" type="file" data-error="#errNm1">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-1 mt-2">
+                                        <div class="col-md-2">
                                             <img class="cropped lg preview-img no-broder" data-toggle="modal"
                                                 data-target="#getCroppedCanvasModal"
                                                 src="data:image/png;base64,{!! $fileDecrypt !!}" alt="" />
@@ -78,7 +67,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <textarea name="description" class="form-control summernote" id="description">{{ @$data->description }} </textarea>
+                                                <textarea id="description" name="description" class="form-control summernote"> {{ @$data->description }}</textarea>
                                             </div>
                                         </div>
 
@@ -117,16 +106,18 @@
 
 @push('child-scripts')
     <script>
-        $('#add_e_event').validate({
+        $('#datepicker').datepicker({
+            format: 'mm-dd-YYYY',
+            starDate: "+0d"
+        });
+
+        $('#add_news').validate({
             rules: {
                 name: {
                     maxlength: 50,
                     required: true
                 },
-                designation: {
-                    maxlength: 50,
-                    required: true
-                },
+
                 description: {
                     required: true
                 },
@@ -134,29 +125,26 @@
                     required: false,
                     accept: "image/jpg,image/jpeg,image/png",
                 },
+
+
             },
             messages: {
 
-                event_title: {
-                    required: "Please enter a name."
+
+                name: {
+                    required: "Please enter a title."
                 },
 
-                designation: {
-                    required: "Please enter a designation."
-                },
+
                 description: {
                     required: "Please enter a description."
                 },
-
                 image: {
                     required: "Please select image",
                     accept: "jpg ,jpeg ,png formate only allowed",
                     // filesize: "Must be file size 1mb  only allowed!"
                 },
 
-                description: {
-                    required: "Please enter a description."
-                },
 
                 errorElement: 'span',
                 errorPlacement: function(error, element) {
@@ -183,16 +171,6 @@
                 $(element).removeClass('is-invalid');
             },
             ignore: ":hidden:not(.summernote),.note-editable.panel-body",
-            // submitHandler: function(form) {
-
-            //     console.log("sdf");
-            //     if ($('#history_description').summernote('isEmpty')) { //using id
-            //         console.log("sdf");
-            //         alert('Description is empty');
-            //     } else {
-            //         form.submit();
-            //     }
-            // }
         });
     </script>
 @endpush

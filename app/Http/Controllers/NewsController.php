@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use App\Models\ExecutiveCommittees;
+use App\Models\News;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 use Str;
-use Illuminate\Support\Facades\Validator;
 
-class ExecutiveCommitteeController extends Controller
+class NewsController extends Controller
 {
 
     use FileUpload;
@@ -24,14 +22,12 @@ class ExecutiveCommitteeController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $ExecutiveCommittees = ExecutiveCommittees::query();
 
-            $data = $ExecutiveCommittees->where("org_id", Auth::user()->id)->orderBy("id", "asc")->get();
+            $News = News::query();
+            $data = $News->where("org_id", Auth::user()->id)->orderBy("created_at", "desc")->get();
 
             return DataTables::of($data)
                 ->addIndexColumn()
-
-
                 ->editColumn('status', function ($row) {
                     if ($row->status) {
                         return '<span class="badge bg-success">Active</span>';
@@ -40,7 +36,7 @@ class ExecutiveCommitteeController extends Controller
                 })
 
                 ->addColumn('action', function ($row) {
-                    $btn  = '<a href="' . URL('executive-committee', ['id' => encrypt($row->id)])  . '" title="Edit" style="color:#004890;"  ><i class="fa fa-edit"></i></a>';
+                    $btn  = '<a href="' . URL('news', ['id' => encrypt($row->id)])  . '" title="Edit" style="color:#004890;"  ><i class="fa fa-edit"></i></a>';
                     return $btn;
                 })
 
@@ -52,8 +48,6 @@ class ExecutiveCommitteeController extends Controller
                                 return true;
                             } else if (Str::contains(Str::lower(@$row['name']), Str::lower($value))) {
                                 return true;
-                            } else if (Str::contains(Str::lower(@$row['designation']), Str::lower($value))) {
-                                return true;
                             }
                             return false;
                         });
@@ -62,7 +56,7 @@ class ExecutiveCommitteeController extends Controller
                 ->rawColumns(['action', 'status'])
                 ->make(true);
         }
-        return view('e_committee.list');
+        return view('news.list');
     }
 
 
@@ -70,7 +64,7 @@ class ExecutiveCommitteeController extends Controller
     public function create()
     {
 
-        return view("e_committee.add");
+        return view("news.add");
     }
 
 
@@ -78,18 +72,13 @@ class ExecutiveCommitteeController extends Controller
     {
         // dd($request->all());
 
-
-        $request->validate([
-            'description' => 'required|min:10', // Add any other rules you need
-        ]);
-
         try {
 
             DB::beginTransaction();
 
             if ($request->image_src) {
                 $request->merge([
-                    'img_path'  => $this->FileEncrpty($request->image_src, "executive_committees_image_path")
+                    'img_path'  => $this->FileEncrpty($request->image_src, "executivby_laws_image_path")
                 ]);
             }
 
@@ -100,9 +89,9 @@ class ExecutiveCommitteeController extends Controller
                 ]
             );
 
-            ExecutiveCommittees::create($request->except('_token', 'image', 'image_src', "image"));
+            News::create($request->except('_token', 'image', 'image_src', "image"));
             DB::commit();
-            return redirect('executive-committee')->with(['success' => "Executive committee created successfully..!"]);
+            return redirect('news')->with(['success' => "News created successfully..!"]);
         } catch (\Exception $e) {
 
             dd($e->getMessage());
@@ -113,16 +102,15 @@ class ExecutiveCommitteeController extends Controller
 
     public function show($id)
     {
-
         $fileDecrypt = '';
-        $data = ExecutiveCommittees::where('id', decrypt($id))->first();
-        $filepath = @$data->img_path;
+        $data = News::where('id', decrypt($id))->first();
+        $filepath = $data->img_path;
         $fileEncrypt = "";
         if ($filepath) {
             $fileEncrypt = decrypt($filepath);
             $fileDecrypt = $this->fileDecrypt($fileEncrypt);
         }
-        return view('e_committee.edit', compact('data', 'fileDecrypt', 'fileEncrypt'));
+        return view('news.edit', compact('data', 'fileDecrypt', 'fileEncrypt'));
     }
 
 
@@ -143,9 +131,10 @@ class ExecutiveCommitteeController extends Controller
                     'status' => $request->input('status')  ? "1" : "0",
                 ]
             );
-            ExecutiveCommittees::where('id', $id)->update($request->except('_token', '_method', 'image_src', "image", "event_title"));
+
+            News::where('id', $id)->update($request->except('_token', '_method', 'image_src', "image", "event_title"));
             DB::commit();
-            return redirect('executive-committee')->with(['success' => "Executive committee updated successfully"]);
+            return redirect('news')->with(['success' => "News updated successfully"]);
         } catch (\Exception $e) {
 
             dd($e);

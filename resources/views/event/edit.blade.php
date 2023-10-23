@@ -60,16 +60,18 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-5">
                                             <div class="form-group">
-                                                <label for="exampleInputFile">Event Photo Upload</label>
+                                                <label for="exampleInputFile">Event Photo Upload <span
+                                                        style="color: grey">(Minimum image resolution 500 X 500
+                                                        px)</span></label>
                                                 <div class="input-group">
                                                     <input name="image" id="file-input" accept="image/*" class=""
                                                         type="file" data-error="#errNm1">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-1">
                                             <img class="cropped lg preview-img no-broder" data-toggle="modal"
                                                 data-target="#getCroppedCanvasModal"
                                                 src="data:image/png;base64,{!! $fileDecrypt !!}" alt="" />
